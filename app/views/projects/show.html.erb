@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Detail:</b>
+  <%= @project.detail %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+<h1>A list of notes under this project</h1>
+
+<% for notes in @project.notes %>
+<li><%=h notes.name %></li>
+<% end %>
+
+
