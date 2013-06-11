@@ -35,20 +35,23 @@ class NotesController < ApplicationController
   # GET /notes/1/edit
   def edit
     @note = Note.find(params[:id])
+
   end
 
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(params[:note])
+    @project = Project.find(params[:project_id])
+    @note = @project.notes.build(params[:note])
 
-    respond_to do |format|
+     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render json: @note, status: :created, location: @note }
+        format.html { redirect_to(@project, :notice => 'Comment was successfully created.') }
+        format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
-        format.html { render action: "new" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.html { redirect_to(@project, :notice => 
+        'Comment could not be saved. Please fill in all fields')}
+        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -57,10 +60,11 @@ class NotesController < ApplicationController
   # PUT /notes/1.json
   def update
     @note = Note.find(params[:id])
+    @project = @note.project
 
     respond_to do |format|
       if @note.update_attributes(params[:note])
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Note was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,12 +76,14 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
+    @project = Project.find(params[:project_id])
     @note = Note.find(params[:id])
     @note.destroy
 
     respond_to do |format|
-      format.html { redirect_to notes_url }
-      format.json { head :no_content }
+      format.html { redirect_to :back }
+      format.xml  { head :ok }
     end
   end
-end
+    
+  end

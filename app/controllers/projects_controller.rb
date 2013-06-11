@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    if current_user
+      @projects = current_user.projects
+    else
+      @projects = Project.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,8 +30,6 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
 
-    3.times { @project.notes.build }
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -42,10 +44,10 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
+  	@project = current_user.projects.build(params[:project])
 
     respond_to do |format|
-      if @project.save || @note.save
+      if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else
@@ -76,10 +78,11 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
+    @note = Note.find(params[:id])
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

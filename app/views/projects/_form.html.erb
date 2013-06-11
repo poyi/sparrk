@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= nested_form_for(@project) do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -25,9 +25,10 @@
   <%= builder.label :name, "Note" %><br />
   <%= builder.text_field :name, :rows => 3 %><br />
   <%= builder.check_box :_destroy %>
-  <%= builder.label :_destroy, "Remove Question" %>
+  <%= builder.link_to_remove "Remove Question" %>
 </p>
 <% end %>
+<p><%= f.link_to_add "Add a task", :notes %></p>
 
   <div class="actions">
     <%= f.submit %>

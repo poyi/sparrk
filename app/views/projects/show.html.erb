@@ -1,23 +1,55 @@
-<p id="notice"><%= notice %></p>
+<div class="logo"><%= link_to "back", projects_path %></div>
 
-<p>
-  <b>Name:</b>
+<div class="main-wrapper">
+
+<div class="project-header">
   <%= @project.name %>
-</p>
-
-<p>
-  <b>Detail:</b>
-  <%= @project.detail %>
-</p>
+</div>
+<div class="project-detail">
+  <p><%= @project.detail %></p>
+</div>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="edit-link">
+  <%= link_to 'Edit', edit_project_path(@project) %>
+</div>
 
-<h1>A list of notes under this project</h1>
+<div class="back-link">
+  <%= link_to 'Back', projects_path %>
+</div>
+
+<div class="notes-content-wrapper">
 
 <% for notes in @project.notes %>
-<li><%=h notes.name %></li>
+<div class="note-box">
+  <div class="note-name">
+  <%=h notes.name %>
+  </div>
+  <div class="note-edit-link">
+  	<%= link_to 'Edit', edit_project_note_path(@project, notes) %>
+  	<%= link_to 'Destroy', project_note_path(@project, notes),
+              :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+<% end %>
+</div> <!--note box end -->
+</div> <!-- notes content wrapper end -->
+
+</div> <!-- main wrapper end -->
+
+<div class="add-note-area">
+
+<%= form_for([@project, @project.notes.build]) do |f| %>
+  <div class="add-note-field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="add-note-field">
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </div>
+  
+  <p><%= f.submit %></p>
 <% end %>
 
+</div>
 

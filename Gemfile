@@ -21,6 +21,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'nested_form'
+gem 'devise'
 
 group :test, :development do
 	gem 'turn'

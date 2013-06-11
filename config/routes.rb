@@ -1,10 +1,15 @@
 Sparrk2::Application.routes.draw do
 
-  resources :notes
+  devise_for :users
 
-  resources :projects
+  resources :projects do
+    resources :notes
+  end
+
 
   get "projects/index"
+
+  root :to => "projects#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
