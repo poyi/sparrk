@@ -28,7 +28,7 @@
     <% if notes.image_url.blank? %>
 <% else %>
 <div class="note-image">
-      <%= image_tag notes.image_url(:thumb).to_s %>
+      <%= link_to image_tag(notes.image_url(:thumb).to_s), notes.image_url %>
   </div>
 <% end %>
   <div class="note-edit-link">

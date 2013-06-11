@@ -79,6 +79,9 @@ class NotesController < ApplicationController
     @project = Project.find(params[:project_id])
     @note = Note.find(params[:id])
     @note.destroy
+    @note.remove_image!
+    @note.remove_image = true
+
 
     respond_to do |format|
       format.html { redirect_to :back }

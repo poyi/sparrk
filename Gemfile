@@ -27,6 +27,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'fog', '~> 1.3.1'
 gem 'masonry-rails'
+gem 'mini_magick'
 
 group :test, :development do
 	gem 'turn'
