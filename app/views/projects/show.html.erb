@@ -25,20 +25,23 @@
   <div class="note-name">
   <%=h notes.name %>
   </div>
+  <div class="note-image">
+  <%= image_tag notes.image_url(:thumb).to_s %>
+  </div>
   <div class="note-edit-link">
   	<%= link_to 'Edit', edit_project_note_path(@project, notes) %>
   	<%= link_to 'Destroy', project_note_path(@project, notes),
               :confirm => 'Are you sure?', :method => :delete %>
   </div>
-<% end %>
 </div> <!--note box end -->
+<% end %>
 </div> <!-- notes content wrapper end -->
 
 </div> <!-- main wrapper end -->
 
 <div class="add-note-area">
 
-<%= form_for([@project, @project.notes.build]) do |f| %>
+<%= form_for([@project, @project.notes.build], :html => {:multipart => true}) do |f| %>
   <div class="add-note-field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -47,6 +50,7 @@
     <%= f.label :link %><br />
     <%= f.text_field :link %>
   </div>
+  <div><%= f.file_field :image %></div>
   
   <p><%= f.submit %></p>
 <% end %>
