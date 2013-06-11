@@ -25,7 +25,8 @@ gem 'nested_form'
 gem 'devise'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'fog'
+gem 'fog', '~> 1.3.1'
+gem 'masonry-rails'
 
 group :test, :development do
 	gem 'turn'

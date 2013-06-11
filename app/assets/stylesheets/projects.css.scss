@@ -45,8 +45,8 @@
 .note-box {
 	float: left;
 	width: 200px;
-	height: 100%;
 	background: #e0e0e0;
+	margin: 10px;
 	padding: 10px;
 }
 
@@ -57,3 +57,18 @@
 .note-edit-link {
 	margin-top: 10px;
 }
+
+#masonry-container {
+  background: #FFF;
+  padding: 5px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  clear: both;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }

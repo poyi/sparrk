@@ -18,16 +18,19 @@
   <%= link_to 'Back', projects_path %>
 </div>
 
-<div class="notes-content-wrapper">
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
 
 <% for notes in @project.notes %>
 <div class="note-box">
   <div class="note-name">
   <%=h notes.name %>
   </div>
-  <div class="note-image">
-  <%= image_tag notes.image_url(:thumb).to_s %>
+    <% if notes.image_url.blank? %>
+<% else %>
+<div class="note-image">
+      <%= image_tag notes.image_url(:thumb).to_s %>
   </div>
+<% end %>
   <div class="note-edit-link">
   	<%= link_to 'Edit', edit_project_note_path(@project, notes) %>
   	<%= link_to 'Destroy', project_note_path(@project, notes),
@@ -56,4 +59,15 @@
 <% end %>
 
 </div>
+
+<script>
+var $container = $('#masonry-container');
+
+$container.imagesLoaded( function(){
+  $container.masonry({
+    itemSelector : '.note-box'
+  });
+});
+
+</script>
 
