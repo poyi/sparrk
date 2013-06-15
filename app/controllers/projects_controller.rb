@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  respond_to :html, :json
+
   # GET /projects
   # GET /projects.json
   def index

@@ -9,14 +9,23 @@
 	float: left;
 	font-size: 20px;
 	clear:right;
-	color: #2f2f2f;
+	color: #ffffff;
+}
+
+.input-project-header {
+	font-family: 'Muli', sans-serif;
+	float: left;
+	font-size: 20px;
+	color: #000000;
+	width: 600px;
+	margin-top: -5px;
 }
 
 .project-detail {
 	margin-top: 20px;
 	font-family: 'Muli', sans-serif;
 	float: left;
-	color: #989898;
+	color: #ebebeb;
 	font-size: 16px;
 	clear:left;
 }
@@ -25,29 +34,67 @@
 	float: left;
 	position: relative;
 	margin-top: 20px;
-	padding-top: 20px;
 	margin-left: 0px;
 	clear: left;
 	width: 80%;
-	border-top: 1px solid #e9e9e9;
 }
 
-.add-note-field {
-	float: left;
+.add-note-text-field {
+	margin-left: 10px;
+	margin-top: 20px;
 }
 
 .add-note-area {
+	width: 500px;
+	height: 91px;
 	position: absolute;
-	right: 0px;
+	right: 10px;
 	top: 0px;
+	background: rgba(245,245,245,0.2);
 }
 
 .note-box {
 	float: left;
-	width: 200px;
+	width: 215px;
 	background: #e0e0e0;
 	margin: 10px;
 	padding: 10px;
+}
+
+.add-note-text-field {
+	margin-top: 10px;
+	width: 140px;
+}
+
+#note_name {
+	font-size: 14px;
+}
+
+.add-note-img-field {
+	width: 280px;
+	height: 40px;
+}
+
+.add-note-button-bk {
+	background: #ffffff;
+}
+
+#note_image {
+	margin-left: 15px;
+	margin-top: 5px;
+	width: 280px;
+}
+
+.note-submit-btn {
+	position: absolute;
+	bottom: -2px;
+	right: 10px;
+	width: 200px;
+	background: #d0d0d0;
+	padding: 10px;
+	cursor: pointer;
+	border: none;
+	font-weight: bold;
 }
 
 .note-name {
@@ -58,17 +105,63 @@
 	margin-top: 10px;
 }
 
+#add-link-box {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 40px;
+	height: 40px;
+	z-index: 10;
+	background: url('/assets/add-notes-btn.png') no-repeat;
+	border: 3px solid #ffffff;
+}
+
+#add-link-box:hover {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	z-index: 10;
+	background: url('/assets/add-notes-btn-hover.png') no-repeat;
+	cursor: pointer;
+	border: 3px solid #ffffff;
+}
+
 #masonry-container {
-  background: #FFF;
+  background: #464646;
   padding: 5px;
   margin-bottom: 20px;
-  border-radius: 5px;
   clear: both;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
 }
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+::-webkit-input-placeholder {
+	padding-top: 3px;
+	padding-left: 5px;
+	font-size: 16px;
+	color: #dcdcdc;
+
+}
+
+:-moz-placeholder { /* Firefox 18- */
+	padding-top: 3px;
+	padding-left: 5px;
+	font-size: 16px;
+	color: #dcdcdc;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   padding-top: 3px;
+	padding-left: 5px;
+	font-size: 16px;
+	color: #dcdcdc;
+}
+
+:-ms-input-placeholder {  
+   padding-top: 3px;
+	padding-left: 5px;
+	font-size: 16px;
+	color: #dcdcdc;
+}

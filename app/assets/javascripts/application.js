@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_nested_form
 //= require jquery_ujs
+//= require jquery.purr
+//= require best_in_place
 //= require masonry/jquery.masonry
 //= require masonry/jquery.event-drag
 //= require masonry/jquery.imagesloaded.min

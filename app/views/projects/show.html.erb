@@ -1,12 +1,17 @@
-<div class="logo"><%= link_to "back", projects_path %></div>
+
+
+
+  <%= link_to "", projects_path, :class => 'logo' %>
+
+
 
 <div class="main-wrapper">
 
 <div class="project-header">
-  <%= @project.name %>
+  <%= best_in_place @project, :name, {:inner_class => "input-project-header", :type => :input} %>
 </div>
 <div class="project-detail">
-  <p><%= @project.detail %></p>
+  <p><%= best_in_place @project, :detail %></p>
 </div>
 
 
@@ -14,16 +19,12 @@
   <%= link_to 'Edit', edit_project_path(@project) %>
 </div>
 
-<div class="back-link">
-  <%= link_to 'Back', projects_path %>
-</div>
-
 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
 
 <% for notes in @project.notes %>
 <div class="note-box">
   <div class="note-name">
-  <%=h notes.name %>
+  <%= best_in_place notes, :name, :path => project_note_path(@project, notes) %>
   </div>
     <% if notes.image_url.blank? %>
 <% else %>
@@ -45,22 +46,19 @@
 <div class="add-note-area">
 
 <%= form_for([@project, @project.notes.build], :html => {:multipart => true}) do |f| %>
-  <div class="add-note-field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="add-note-field">
-    <%= f.label :link %><br />
-    <%= f.text_field :link %>
-  </div>
-  <div><%= f.file_field :image %></div>
+    <div class="add-note-text-field">
+    <%= f.text_area :name, :size => "57x2", placeholder: "Add new note here" %>
+    </div>
   
-  <p><%= f.submit %></p>
+  <div class="add-note-img-field"><%= f.file_field :image %></div>
+  
+  <div class="add-note-button-bk"><%= f.submit '"Add Note" Click or Press enter', :class => 'note-submit-btn'%></div>
 <% end %>
 
 </div>
 
 <script>
+$( document ).ready(function() {
 var $container = $('#masonry-container');
 
 $container.imagesLoaded( function(){
@@ -69,5 +67,6 @@ $container.imagesLoaded( function(){
   });
 });
 
-</script>
 
+});
+</script>

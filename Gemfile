@@ -28,6 +28,7 @@ gem 'rmagick'
 gem 'fog', '~> 1.3.1'
 gem 'masonry-rails'
 gem 'mini_magick'
+gem 'best_in_place'
 
 group :test, :development do
 	gem 'turn'
