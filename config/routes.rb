@@ -4,6 +4,8 @@ Sparrk2::Application.routes.draw do
 
   resources :projects do
     resources :notes
+    resources :prototypes
+    resources :designs
   end
 
 

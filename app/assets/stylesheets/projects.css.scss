@@ -17,7 +17,6 @@
 	float: left;
 	font-size: 20px;
 	color: #000000;
-	width: 600px;
 	margin-top: -5px;
 }
 
@@ -58,7 +57,7 @@
 	width: 215px;
 	background: #e0e0e0;
 	margin: 10px;
-	padding: 10px;
+	padding: 10px 5px 10px 20px;
 }
 
 .add-note-text-field {
@@ -66,8 +65,11 @@
 	width: 140px;
 }
 
-#note_name {
-	font-size: 14px;
+.note-name {
+	font-size: 15px;
+	width: 200px;
+	margin-top: 5px;
+	font-family: 'Muli', helvetica, sans-serif;
 }
 
 .add-note-img-field {
@@ -79,8 +81,7 @@
 	background: #ffffff;
 }
 
-#note_image {
-	margin-left: 15px;
+.note-image {
 	margin-top: 5px;
 	width: 280px;
 }
@@ -95,10 +96,6 @@
 	cursor: pointer;
 	border: none;
 	font-weight: bold;
-}
-
-.note-name {
-	font-size: 14px;
 }
 
 .note-edit-link {
@@ -126,12 +123,6 @@
 	border: 3px solid #ffffff;
 }
 
-#masonry-container {
-  background: #464646;
-  padding: 5px;
-  margin-bottom: 20px;
-  clear: both;
-}
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
@@ -164,4 +155,17 @@
 	padding-left: 5px;
 	font-size: 16px;
 	color: #dcdcdc;
+}
+
+#process-nav-group {
+	position: absolute;
+	top: 100px;
+	right: 10px;
+	width: 50px;
+}
+
+#process-nav-group span{
+	float: left;
+	width: 50px;
+	height: 50px;
 }

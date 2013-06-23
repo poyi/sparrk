@@ -2,6 +2,11 @@
 
 
   <%= link_to "", projects_path, :class => 'logo' %>
+  <div id="process-nav-group">
+    <span id="brainstorm-link">brainstorm</span>
+    <span id="prototype-link" >prototype</span>
+    <span id="design-link">design</span>
+  </div>
 
 
 
@@ -14,11 +19,7 @@
   <p><%= best_in_place @project, :detail %></p>
 </div>
 
-
-<div class="edit-link">
-  <%= link_to 'Edit', edit_project_path(@project) %>
-</div>
-
+<div id="note-section" class="note-area hidden-section">
 <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
 
 <% for notes in @project.notes %>
@@ -33,33 +34,114 @@
   </div>
 <% end %>
   <div class="note-edit-link">
-  	<%= link_to 'Edit', edit_project_note_path(@project, notes) %>
   	<%= link_to 'Destroy', project_note_path(@project, notes),
               :confirm => 'Are you sure?', :method => :delete %>
   </div>
 </div> <!--note box end -->
 <% end %>
 </div> <!-- notes content wrapper end -->
+</div> <!-- end note section container -->
+
+<div id="prototype-container" class="prototype-area hidden-section">
+
+  <div id="masonry-container2" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
+
+<% for prototypes in @project.prototypes %>
+<div class="note-box">
+  <div class="note-name">
+  <%= best_in_place prototypes, :name, :path => project_prototype_path(@project, prototypes) %>
+  </div>
+    <% if prototypes.image_url.blank? %>
+<% else %>
+<div class="note-image">
+      <%= link_to image_tag(prototypes.image_url(:thumb).to_s), prototypes.image_url %>
+  </div>
+<% end %>
+  <div class="note-edit-link">
+    <%= link_to 'Destroy', project_prototype_path(@project, prototypes),
+              :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+</div> <!--note box end -->
+<% end %>
+</div> <!-- prototpye content wrapper end -->
+
+</div> <!-- prototype container end -->
+
+<div id="design-container" class="design-area hidden-section">
+
+  <div id="masonry-container3" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
+
+<% for designs in @project.designs %>
+<div class="note-box">
+  <div class="note-name">
+  <%= best_in_place designs, :name, :path => project_design_path(@project, designs) %>
+  </div>
+    <% if designs.image_url.blank? %>
+<% else %>
+<div class="note-image">
+      <%= link_to image_tag(designs.image_url(:thumb).to_s), designs.image_url %>
+  </div>
+<% end %>
+  <div class="note-edit-link">
+    <%= link_to 'Destroy', project_design_path(@project, designs),
+              :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+</div> <!--design box end -->
+<% end %>
+</div> <!-- design content wrapper end -->
+
+</div> <!-- design container end -->
+
 
 </div> <!-- main wrapper end -->
 
+
 <div class="add-note-area">
 
-<%= form_for([@project, @project.notes.build], :html => {:multipart => true}) do |f| %>
+<div class="hidden-section note-area">
+<%= form_for([@project, @project.notes.build], :html => {:multipart => true, :class => "hidden-section note-area"}) do |f| %>
     <div class="add-note-text-field">
     <%= f.text_area :name, :size => "57x2", placeholder: "Add new note here" %>
     </div>
   
   <div class="add-note-img-field"><%= f.file_field :image %></div>
   
-  <div class="add-note-button-bk"><%= f.submit '"Add Note" Click or Press enter', :class => 'note-submit-btn'%></div>
+  <div class="add-note-button-bk"><%= f.submit 'Add Note', :class => 'note-submit-btn'%></div>
 <% end %>
-
 </div>
+
+<div class="hidden-section prototype-area">
+<%= form_for([@project, @project.prototypes.build], :html => {:multipart => true}) do |f| %>
+    <div class="add-note-text-field">
+    <%= f.text_area :name, :size => "57x2", placeholder: "Add new prototype here" %>
+    </div>
+  
+  <div class="add-note-img-field"><%= f.file_field :image %></div>
+  
+  <div class="add-note-button-bk"><%= f.submit 'Add Prototype', :class => 'note-submit-btn'%></div>
+<% end %>
+</div>
+
+<div class="hidden-section design-area">
+<%= form_for([@project, @project.designs.build], :html => {:multipart => true, :class => "hidden-section design-area"}) do |f| %>
+    <div class="add-note-text-field">
+    <%= f.text_area :name, :size => "57x2", placeholder: "Add new design here" %>
+    </div>
+  
+  <div class="add-note-img-field"><%= f.file_field :image %></div>
+  
+  <div class="add-note-button-bk"><%= f.submit 'Add Final Design', :class => 'note-submit-btn'%></div>
+<% end %>
+</div>
+</div> <!-- end add note area -->
+
+
+
+
 
 <script>
 $( document ).ready(function() {
-var $container = $('#masonry-container');
+var $container = $('#masonry-container, #masonry-container2, #masonry-container3');
 
 $container.imagesLoaded( function(){
   $container.masonry({
@@ -67,6 +149,48 @@ $container.imagesLoaded( function(){
   });
 });
 
+$('.hidden-section').hide();
+$('.note-area').show();
+
+$('#brainstorm-link').click(function(){
+  $('.hidden-section').hide();
+  $('.note-area').show();
+  var $container = $('#masonry-container, #masonry-container2, #masonry-container3');
+
+$container.imagesLoaded( function(){
+  $container.masonry({
+    itemSelector : '.note-box'
+  });
+});
 
 });
+
+$('#prototype-link').click(function(){
+  $('.hidden-section').hide();
+  $('.prototype-area').show();
+  var $container = $('#masonry-container, #masonry-container2, #masonry-container3');
+
+$container.imagesLoaded( function(){
+  $container.masonry({
+    itemSelector : '.note-box'
+  });
+});
+});
+
+$('#design-link').click(function(){
+  $('.hidden-section').hide();
+  $('.design-area').show();
+  var $container = $('#masonry-container, #masonry-container2, #masonry-container3');
+
+$container.imagesLoaded( function(){
+  $container.masonry({
+    itemSelector : '.note-box'
+  });
+});
+});
+
+});
+
+
+
 </script>

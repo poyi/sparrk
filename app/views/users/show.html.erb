@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Content:</b>
+  <h1><%= @user.username %>'s Profile</h1>
+</p>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Detail</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project.each do |project| %>
+  <tr>
+    <td><%= project.name %></td>
+    <td><%= project.detail %></td>
+    <td><%= link_to 'Show', user_project_path(@user) %></td>
+    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project', new_user_project_path(current_user) %>
+
