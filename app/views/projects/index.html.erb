@@ -1,14 +1,5 @@
 
-<div class="user-nav-bar">
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-  <% end %>
-</div>
+
 
  <%= link_to "", projects_path, :class => 'logo' %>
 
@@ -36,6 +27,7 @@
 
 <% if user_signed_in? && current_user %>
   <%= link_to 'New Project', new_project_path, :class => 'add-project-link' %>
-<% end %>
+  <% else %>
 
 <a class="poyichen-link" href="http://www.poyichen.com"><img src="/assets/profile-image.png" /></a>
+<% end %>
