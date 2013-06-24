@@ -3,9 +3,9 @@
 
   <%= link_to "", projects_path, :class => 'logo' %>
   <div id="process-nav-group">
-    <span id="brainstorm-link">brainstorm</span>
-    <span id="prototype-link" >prototype</span>
-    <span id="design-link">design</span>
+    <span id="brainstorm-link" class="process-nav-background"><p class="process-link-text">Ideas</p></span>
+    <span id="prototype-link" class="process-nav-background"><p class="process-link-text">Concepts</p></span>
+    <span id="design-link" class="process-nav-background"><p class="process-link-text">Designs</p></span>
   </div>
 
 
@@ -151,10 +151,13 @@ $container.imagesLoaded( function(){
 
 $('.hidden-section').hide();
 $('.note-area').show();
+$('#brainstorm-link').addClass('process-nav-group-selected');
 
 $('#brainstorm-link').click(function(){
   $('.hidden-section').hide();
   $('.note-area').show();
+  $('#process-nav-group span').removeClass('process-nav-group-selected');
+  $('#brainstorm-link').addClass('process-nav-group-selected');
   var $container = $('#masonry-container, #masonry-container2, #masonry-container3');
 
 $container.imagesLoaded( function(){
@@ -168,6 +171,8 @@ $container.imagesLoaded( function(){
 $('#prototype-link').click(function(){
   $('.hidden-section').hide();
   $('.prototype-area').show();
+  $('#process-nav-group span').removeClass('process-nav-group-selected');
+  $('#prototype-link').addClass('process-nav-group-selected');
   var $container = $('#masonry-container, #masonry-container2, #masonry-container3');
 
 $container.imagesLoaded( function(){
@@ -180,6 +185,8 @@ $container.imagesLoaded( function(){
 $('#design-link').click(function(){
   $('.hidden-section').hide();
   $('.design-area').show();
+  $('#process-nav-group span').removeClass('process-nav-group-selected');
+  $('#design-link').addClass('process-nav-group-selected');
   var $container = $('#masonry-container, #masonry-container2, #masonry-container3');
 
 $container.imagesLoaded( function(){

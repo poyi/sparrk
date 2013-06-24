@@ -5,15 +5,16 @@
 
 .project-header {
 	margin-top: 25px;
-	font-family: 'Muli', sans-serif;
+	font-family: 'Muli', helvetica, sans-serif;
 	float: left;
+	margin-left: 10px;
 	font-size: 20px;
 	clear:right;
 	color: #ffffff;
 }
 
 .input-project-header {
-	font-family: 'Muli', sans-serif;
+	font-family: 'Muli', helvetica, sans-serif;
 	float: left;
 	font-size: 20px;
 	color: #000000;
@@ -22,7 +23,8 @@
 
 .project-detail {
 	margin-top: 20px;
-	font-family: 'Muli', sans-serif;
+	margin-left: 10px;
+	font-family: 'Muli', helvetica, sans-serif;
 	float: left;
 	color: #ebebeb;
 	font-size: 16px;
@@ -35,7 +37,7 @@
 	margin-top: 20px;
 	margin-left: 0px;
 	clear: left;
-	width: 80%;
+	width: 83%;
 }
 
 .add-note-text-field {
@@ -83,7 +85,7 @@
 
 .note-image {
 	margin-top: 5px;
-	width: 280px;
+	width: 200px;
 }
 
 .note-submit-btn {
@@ -164,8 +166,40 @@
 	width: 50px;
 }
 
-#process-nav-group span{
-	float: left;
-	width: 50px;
-	height: 50px;
+
+.process-link-text {
+	text-align: center;
+	color: #e9e9e9;
+	padding: 10px;
+	font-family: 'Muli', helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.process-nav-background:hover {
+	float: right;
+	width: 90px;
+	height: 40px;
+	margin-top: 10px;
+	background: #cccccc;
+	cursor: pointer;
+}
+
+.process-nav-background {
+	float: right;
+	width: 80px;
+	height: 40px;
+	margin-top: 10px;
+	background: #969696;
+	cursor: pointer;
+}
+
+
+.process-nav-group-selected {
+	float: right;
+	width: 90px;
+	height: 40px;
+	margin-top: 10px;
+	color: #ffffff;
+	background: #424242;
 }

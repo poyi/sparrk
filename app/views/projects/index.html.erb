@@ -27,6 +27,7 @@
     <td><%= project.name %></td>
     <td><%= project.detail %></td>
     <td><%= link_to 'Show', project %></td>
+    <td><%= best_in_place project, :publish, :type => :checkbox, :collection => ["Draft", "Publish"] %></td>
     <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
