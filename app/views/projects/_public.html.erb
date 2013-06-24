@@ -1,10 +1,10 @@
 <div class="main-wrapper">
 
 <div class="project-header">
-  <%= best_in_place @project, :name, {:inner_class => "input-project-header", :type => :input} %>
+  <%= @project.name %>
 </div>
 <div class="project-detail">
-  <p><%= best_in_place @project, :detail %></p>
+  <p><%= @project.detail %></p>
 </div>
 
 <div id="note-section" class="note-area hidden-section">
