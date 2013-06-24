@@ -24,12 +24,18 @@
       <div class="project-item-detail">
         <p><%= project.detail %></p>
       </div>
-      <%= best_in_place project, :publish, :type => :checkbox, :collection => ["Draft", "Publish"] %>
-      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if user_signed_in? && current_user %>
+        <%= best_in_place project, :publish, :type => :checkbox, :collection => ["Draft", "Publish"] %>
+        <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
   <% end %>
 </div> <!-- project list end div -->
 
 
 </div> <!-- main wrapper div end -->
 
-<%= link_to 'New Project', new_project_path, :class => 'add-project-link' %>
+<% if user_signed_in? && current_user %>
+  <%= link_to 'New Project', new_project_path, :class => 'add-project-link' %>
+<% end %>
+
+<a class="poyichen-link" href="http://www.poyichen.com"><img src="/assets/profile-image.png" /></a>

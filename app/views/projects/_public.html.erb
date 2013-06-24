@@ -1,0 +1,75 @@
+<div class="main-wrapper">
+
+<div class="project-header">
+  <%= best_in_place @project, :name, {:inner_class => "input-project-header", :type => :input} %>
+</div>
+<div class="project-detail">
+  <p><%= best_in_place @project, :detail %></p>
+</div>
+
+<div id="note-section" class="note-area hidden-section">
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
+
+<% for notes in @project.notes %>
+<div class="note-box">
+  <div class="note-name">
+  <%= notes.name %>
+  </div>
+    <% if notes.image_url.blank? %>
+<% else %>
+<div class="note-image">
+      <%= link_to image_tag(notes.image_url(:thumb).to_s), notes.image_url %>
+  </div>
+<% end %>
+</div> <!--note box end -->
+<% end %>
+</div> <!-- notes content wrapper end -->
+</div> <!-- end note section container -->
+
+<div id="prototype-container" class="prototype-area hidden-section">
+
+  <div id="masonry-container2" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
+
+<% for prototypes in @project.prototypes %>
+<div class="note-box">
+  <div class="note-name">
+  <%= prototypes.name %>
+  </div>
+    <% if prototypes.image_url.blank? %>
+<% else %>
+<div class="note-image">
+      <%= link_to image_tag(prototypes.image_url(:thumb).to_s), prototypes.image_url %>
+  </div>
+<% end %>
+ 
+</div> <!--note box end -->
+<% end %>
+</div> <!-- prototpye content wrapper end -->
+
+</div> <!-- prototype container end -->
+
+<div id="design-container" class="design-area hidden-section">
+
+  <div id="masonry-container3" class="transitions-enabled infinite-scroll clearfix notes-content-wrapper">
+
+<% for designs in @project.designs %>
+<div class="note-box">
+  <div class="note-name">
+  <%= designs.name %>
+  </div>
+    <% if designs.image_url.blank? %>
+<% else %>
+<div class="note-image">
+      <%= link_to image_tag(designs.image_url(:thumb).to_s), designs.image_url %>
+  </div>
+<% end %>
+ 
+</div> <!--design box end -->
+<% end %>
+</div> <!-- design content wrapper end -->
+
+</div> <!-- design container end -->
+
+
+</div> <!-- main wrapper end -->
+
