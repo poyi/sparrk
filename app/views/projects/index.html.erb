@@ -1,38 +1,35 @@
 
-       <p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
+<div class="user-nav-bar">
+  <% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+  <% end %>
+</div>
 
-<div class="logo"><%= link_to "Logo", root_path %></div>
+ <%= link_to "", projects_path, :class => 'logo' %>
 
-<h1>Projec page for poyi</h1>
+ <div class="main-wrapper">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Detail</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="project-intro-header"><p>Poyi's Design Projects</p></div>
 
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= project.detail %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= best_in_place project, :publish, :type => :checkbox, :collection => ["Draft", "Publish"] %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div class="project-list">
+  <% @projects.each do |project| %>
+    <div class="project-item-name">
+      <%= link_to project.name, project %>
+    </div>
+      <div class="project-item-detail">
+        <p><%= project.detail %></p>
+      </div>
+      <%= best_in_place project, :publish, :type => :checkbox, :collection => ["Draft", "Publish"] %>
+      <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+</div> <!-- project list end div -->
 
-<br />
 
-<%= link_to 'New Project', new_project_path %>
+</div> <!-- main wrapper div end -->
+
+<%= link_to 'New Project', new_project_path, :class => 'add-project-link' %>

@@ -4,7 +4,7 @@
 
 
 .project-header {
-	margin-top: 25px;
+	margin-top: 50px;
 	font-family: 'Muli', helvetica, sans-serif;
 	float: left;
 	margin-left: 10px;
@@ -202,4 +202,55 @@
 	margin-top: 10px;
 	color: #ffffff;
 	background: #424242;
+}
+
+.add-project-link {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+	color: #ffffff;
+	font-size: 16px;
+}
+
+.project-intro-header {
+	margin-top: 50px;
+}
+
+.project-intro-header p{
+	font-family: 'Muli', helvetica, sans-serif;
+	font-size: 20px;
+	color: #ffffff;
+}
+
+.user-nav-bar {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #ffffff;
+}
+
+.project-item-name {
+	margin-top: 40px;
+}
+
+.project-item-name a{
+	font-family: 'Muli', helvetica, sans-serif;
+	font-size: 18px;
+	color: #eaeaea !important;
+	text-decoration: none;
+}
+
+.project-item-name a:hover{
+	font-family: 'Muli', helvetica, sans-serif;
+	font-size: 18px;
+	color: #eaeaea !important;
+	background: #464646;
+	text-decoration: underline;
+}
+
+.project-item-detail p{
+	font-family: 'Muli', helvetica, sans-serif;
+	font-size: 14px;
+	margin-top: 10px;
+	color: #b8b8b8 !important;
 }

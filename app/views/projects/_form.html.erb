@@ -20,15 +20,6 @@
     <%= f.text_field :detail %>
   </div>
 
-  <%= f.fields_for :notes do |builder| %>
-<p>
-  <%= builder.label :name, "Note" %><br />
-  <%= builder.text_field :name, :rows => 3 %><br />
-  <%= builder.check_box :_destroy %>
-  <%= builder.link_to_remove "Remove Question" %>
-</p>
-<% end %>
-<p><%= f.link_to_add "Add a task", :notes %></p>
 
   <div class="actions">
     <%= f.submit %>

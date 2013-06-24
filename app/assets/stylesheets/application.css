@@ -79,11 +79,10 @@ table {
 }
 
 .main-wrapper {
-	width: 100%;
+	width: 83%;
 	height: 100%;
 	padding-left: 100px;
 	padding-right: 100px;
-	background: #e8e8e8;
 }
 
 .edit-link {
