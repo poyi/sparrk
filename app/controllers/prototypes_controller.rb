@@ -3,38 +3,27 @@ class PrototypesController < ApplicationController
   # GET /prototypes.json
   def index
     @prototypes = Prototype.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @prototypes }
-    end
+    redirect_to root_path
   end
 
   # GET /prototypes/1
   # GET /prototypes/1.json
   def show
     @prototype = Prototype.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @prototype }
-    end
+    redirect_to root_path
   end
 
   # GET /prototypes/new
   # GET /prototypes/new.json
   def new
     @prototype = Prototype.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @prototype }
-    end
+    redirect_to root_path
   end
 
   # GET /prototypes/1/edit
   def edit
     @prototype = Prototype.find(params[:id])
+    redirect_to root_path
   end
 
   # POST /prototypes
@@ -44,13 +33,11 @@ class PrototypesController < ApplicationController
     @prototype = @project.prototypes.build(params[:prototype])
     
      respond_to do |format|
-      if @prototype.save
-        format.html { redirect_to(@project, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @project, :status => :created, :location => @project }
+      if @note.save
+        format.html { redirect_to :back }  
       else
-        format.html { redirect_to(@project, :notice => 
-        'Comment could not be saved. Please fill in all fields')}
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        format.html { redirect_to :back , :notice => 
+        'Comment could not be saved. Please fill in all fields'}
       end
     end
   end
@@ -61,12 +48,11 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
 
     respond_to do |format|
-      if @prototype.update_attributes(params[:prototype])
-        format.html { redirect_to @prototype, notice: 'Prototype was successfully updated.' }
-        format.json { head :no_content }
+      if @note.save
+        format.html { redirect_to :back }  
       else
-        format.html { render action: "edit" }
-        format.json { render json: @prototype.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back , :notice => 
+        'Comment could not be saved. Please fill in all fields'}
       end
     end
   end

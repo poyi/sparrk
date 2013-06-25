@@ -3,38 +3,27 @@ class DesignsController < ApplicationController
   # GET /designs.json
   def index
     @designs = Design.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @designs }
-    end
+    redirect_to root_path
   end
 
   # GET /designs/1
   # GET /designs/1.json
   def show
     @design = Design.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @design }
-    end
+    redirect_to root_path
   end
 
   # GET /designs/new
   # GET /designs/new.json
   def new
     @design = Design.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @design }
-    end
+    redirect_to root_path
   end
 
   # GET /designs/1/edit
   def edit
     @design = Design.find(params[:id])
+    redirect_to root_path
   end
 
   # POST /designs
@@ -44,13 +33,11 @@ class DesignsController < ApplicationController
     @design = @project.designs.build(params[:design])
 
     respond_to do |format|
-      if @design.save
-        format.html { redirect_to(@project, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @project, :status => :created, :location => @project }
+      if @note.save
+        format.html { redirect_to :back }  
       else
-        format.html { redirect_to(@project, :notice => 
-        'Comment could not be saved. Please fill in all fields')}
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+        format.html { redirect_to :back , :notice => 
+        'Comment could not be saved. Please fill in all fields'}
       end
     end
   end
@@ -59,14 +46,12 @@ class DesignsController < ApplicationController
   # PUT /designs/1.json
   def update
     @design = Design.find(params[:id])
-
     respond_to do |format|
-      if @design.update_attributes(params[:design])
-        format.html { redirect_to @design, notice: 'Design was successfully updated.' }
-        format.json { head :no_content }
+      if @note.save
+        format.html { redirect_to :back }  
       else
-        format.html { render action: "edit" }
-        format.json { render json: @design.errors, status: :unprocessable_entity }
+        format.html { redirect_to :back , :notice => 
+        'Comment could not be saved. Please fill in all fields'}
       end
     end
   end
