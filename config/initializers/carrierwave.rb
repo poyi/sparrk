@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
     :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'], # required
   }
   
-  config.fog_directory = ENV['BUCKET']
+  config.fog_directory = ENV['BUCKET_NAME']
   config.fog_public     = true # optional, defaults to true
 
 end

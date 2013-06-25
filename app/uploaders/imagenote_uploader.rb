@@ -12,8 +12,8 @@ class ImagenoteUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
 
-  storage (Rails.env.production? ? :fog : :file)
-  # storage :fog
+  # storage (Rails.env.production? ? :fog : :file)
+  storage :fog
   # storage :file
 
   # Override the directory where uploaded files will be stored.
