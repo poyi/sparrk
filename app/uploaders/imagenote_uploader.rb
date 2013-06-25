@@ -11,9 +11,9 @@ class ImagenoteUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  # storage (Rails.env.production? ? :fog : :file)
+  storage (Rails.env.production? ? :fog : :file)
   # storage :fog
-  storage :file
+  # storage :file
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
