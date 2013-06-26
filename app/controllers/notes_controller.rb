@@ -57,6 +57,7 @@ class NotesController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @note.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # DELETE /notes/1

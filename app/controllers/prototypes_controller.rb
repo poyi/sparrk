@@ -55,6 +55,7 @@ class PrototypesController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @prototype.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # DELETE /prototypes/1

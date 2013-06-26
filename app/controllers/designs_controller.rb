@@ -54,6 +54,7 @@ class DesignsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @design.errors, status: :unprocessable_entity }
       end
+    end
   end
 
   # DELETE /designs/1
