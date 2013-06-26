@@ -35,10 +35,10 @@ class NotesController < ApplicationController
 
      respond_to do |format|
       if @note.save
-        format.html { redirect_to :back }  
+        format.html { redirect_to :back }
+        format.json { render json: @project, status: :created, location: @project }  
       else
-        format.html { redirect_to :back , :notice => 
-        'Comment could not be saved. Please fill in all fields'}
+        format.html { redirect_to :back }
       end
     end
   end
@@ -51,10 +51,10 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to :back }  
+        format.html { redirect_to :back }
+        format.json { render json: @project, status: :created, location: @project }  
       else
-        format.html { redirect_to :back , :notice => 
-        'Comment could not be saved. Please fill in all fields'}
+        format.html { redirect_to :back }
       end
     end
   end

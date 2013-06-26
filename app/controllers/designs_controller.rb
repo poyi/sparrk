@@ -34,10 +34,10 @@ class DesignsController < ApplicationController
 
     respond_to do |format|
       if @design.save
-        format.html { redirect_to :back }  
+        format.html { redirect_to :back } 
+        format.json { render json: @project, status: :created, location: @project } 
       else
-        format.html { redirect_to :back , :notice => 
-        'Comment could not be saved. Please fill in all fields'}
+        format.html { redirect_to :back }
       end
     end
   end
@@ -48,10 +48,10 @@ class DesignsController < ApplicationController
     @design = Design.find(params[:id])
     respond_to do |format|
       if @design.save
-        format.html { redirect_to :back }  
+        format.html { redirect_to :back } 
+        format.json { render json: @project, status: :created, location: @project } 
       else
-        format.html { redirect_to :back , :notice => 
-        'Comment could not be saved. Please fill in all fields'}
+        format.html { redirect_to :back }
       end
     end
   end
