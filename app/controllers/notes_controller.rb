@@ -50,13 +50,13 @@ class NotesController < ApplicationController
     @project = @note.project
 
     respond_to do |format|
-      if @note.save
-        format.html { redirect_to :back }
-        format.json { render json: @project, status: :created, location: @project }  
+      if @note.update_attributes(params[:note])
+        format.html { redirect_to @project, notice: 'Note was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { redirect_to :back }
+        format.html { render action: "edit" }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /notes/1

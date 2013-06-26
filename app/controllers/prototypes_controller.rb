@@ -48,13 +48,13 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
 
     respond_to do |format|
-      if @prototype.save
-        format.html { redirect_to :back } 
-        format.json { render json: @project, status: :created, location: @project } 
+      if @prototype.update_attributes(params[:prototype])
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { redirect_to :back }
+        format.html { render action: "edit" }
+        format.json { render json: @prototype.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /prototypes/1

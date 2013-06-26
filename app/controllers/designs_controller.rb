@@ -47,13 +47,13 @@ class DesignsController < ApplicationController
   def update
     @design = Design.find(params[:id])
     respond_to do |format|
-      if @design.save
-        format.html { redirect_to :back } 
-        format.json { render json: @project, status: :created, location: @project } 
+      if @design.update_attributes(params[:design])
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { redirect_to :back }
+        format.html { render action: "edit" }
+        format.json { render json: @design.errors, status: :unprocessable_entity }
       end
-    end
   end
 
   # DELETE /designs/1
