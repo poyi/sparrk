@@ -33,7 +33,7 @@ class DesignsController < ApplicationController
     @design = @project.designs.build(params[:design])
 
     respond_to do |format|
-      if @note.save
+      if @design.save
         format.html { redirect_to :back }  
       else
         format.html { redirect_to :back , :notice => 
@@ -47,7 +47,7 @@ class DesignsController < ApplicationController
   def update
     @design = Design.find(params[:id])
     respond_to do |format|
-      if @note.save
+      if @design.save
         format.html { redirect_to :back }  
       else
         format.html { redirect_to :back , :notice => 

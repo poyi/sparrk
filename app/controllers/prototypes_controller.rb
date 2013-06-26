@@ -33,7 +33,7 @@ class PrototypesController < ApplicationController
     @prototype = @project.prototypes.build(params[:prototype])
     
      respond_to do |format|
-      if @note.save
+      if @prototype.save
         format.html { redirect_to :back }  
       else
         format.html { redirect_to :back , :notice => 
@@ -48,7 +48,7 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
 
     respond_to do |format|
-      if @note.save
+      if @prototype.save
         format.html { redirect_to :back }  
       else
         format.html { redirect_to :back , :notice => 
