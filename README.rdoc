@@ -1,8 +1,0 @@
-Sparrk 
---------------------------------
-
-A design process storyboard created to document notes for each steps of design process. 
-
-Demo: http://sparrk.heroku.com
-
-* Signup is disabled   
